@@ -1,0 +1,35 @@
+# Fail a pull request when agent behavior drifts beyond a threshold.
+#
+# The two session logs have to come from somewhere your CI can read. Common
+# setups: commit a small baseline log, download one from the run's artifacts,
+# or fetch both from a session-log store.
+name: behavior-drift
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # driftwatch has zero runtime dependencies, so npx is enough.
+      - name: Compare the baseline run against the candidate run
+        run: |
+          npx -y dsh-driftwatch compare "$BASELINE" "$CANDIDATE" \
+            --fail-on-drift 35 \
+            --markdown drift-report.md
+        env:
+          BASELINE: sessions/baseline/session.jsonl.zstd
+          CANDIDATE: sessions/candidate/session.jsonl.zstd
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: drift-report
+          path: drift-report.md
