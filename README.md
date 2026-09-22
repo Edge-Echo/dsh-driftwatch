@@ -22,6 +22,14 @@ DSH logs everything (`Model-visible means logged`), so the evidence already exis
 
 DriftWatch deliberately does **not** assert and does **not** render trajectories. It produces a *drift report*: a structured, reviewable statement of behavioral change, plus an optional threshold gate for CI.
 
+## What it looks like
+
+![drift report](assets/screenshot-compare.png)
+
+## What it looks like
+
+![netassist doctor](assets/screenshot-doctor.png)
+
 ## Quick start
 
 ```sh
