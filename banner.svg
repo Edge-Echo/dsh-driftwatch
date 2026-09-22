@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="dsh-driftwatch — Behaviour-drift reports between DeepSeek Harness sessions">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="55%" stop-color="#20170c"/>
+      <stop offset="100%" stop-color="#0b1220"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f1f2e"/>
+      <stop offset="100%" stop-color="#0c1a28"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="75%" cy="20%" r="65%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="15%" cy="90%" r="55%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+  <rect width="1280" height="640" fill="url(#glow2)"/>
+  <g fill="#ffffff" opacity="0.05">
+    <circle cx="60" cy="60" r="3"/><circle cx="180" cy="60" r="3"/><circle cx="300" cy="60" r="3"/><circle cx="420" cy="60" r="3"/><circle cx="540" cy="60" r="3"/><circle cx="660" cy="60" r="3"/><circle cx="780" cy="60" r="3"/><circle cx="900" cy="60" r="3"/><circle cx="1020" cy="60" r="3"/><circle cx="1140" cy="60" r="3"/><circle cx="60" cy="180" r="3"/><circle cx="180" cy="180" r="3"/><circle cx="300" cy="180" r="3"/><circle cx="420" cy="180" r="3"/><circle cx="540" cy="180" r="3"/><circle cx="660" cy="180" r="3"/><circle cx="780" cy="180" r="3"/><circle cx="900" cy="180" r="3"/><circle cx="1020" cy="180" r="3"/><circle cx="1140" cy="180" r="3"/><circle cx="60" cy="300" r="3"/><circle cx="180" cy="300" r="3"/><circle cx="300" cy="300" r="3"/><circle cx="1020" cy="300" r="3"/><circle cx="1140" cy="300" r="3"/><circle cx="60" cy="420" r="3"/><circle cx="180" cy="420" r="3"/><circle cx="300" cy="420" r="3"/><circle cx="1020" cy="420" r="3"/><circle cx="1140" cy="420" r="3"/><circle cx="60" cy="540" r="3"/><circle cx="180" cy="540" r="3"/><circle cx="300" cy="540" r="3"/><circle cx="420" cy="540" r="3"/><circle cx="540" cy="540" r="3"/><circle cx="660" cy="540" r="3"/><circle cx="780" cy="540" r="3"/><circle cx="900" cy="540" r="3"/><circle cx="1020" cy="540" r="3"/><circle cx="1140" cy="540" r="3"/>
+  </g>
+
+  <!-- motif -->
+  <g stroke="#fbbf24" stroke-opacity="0.5" stroke-width="2.5" fill="none">
+    <path d="M 860 96 L 940 130 L 1010 118 L 1080 168 L 1150 150"/>
+  </g>
+  <g stroke="#f59e0b" stroke-opacity="0.85" stroke-width="2.5" fill="none">
+    <path d="M 860 96 L 940 130 L 1010 170 L 1080 214 L 1150 236"/>
+  </g>
+  <g fill="#fbbf24" fill-opacity="0.9">
+    <circle cx="860" cy="96" r="9"/>
+  </g>
+  <g fill="#f59e0b">
+    <circle cx="1010" cy="170" r="7" fill-opacity="0.65"/>
+    <circle cx="1150" cy="236" r="9" fill-opacity="0.95"/>
+  </g>
+  <circle cx="1150" cy="236" r="22" fill="none" stroke="#f59e0b" stroke-opacity="0.25" stroke-width="1.5"/>
+  <g stroke="#94a3b8" stroke-opacity="0.28" stroke-width="1.5" stroke-dasharray="6 7">
+    <line x1="1010" y1="118" x2="1010" y2="170"/>
+    <line x1="1150" y1="150" x2="1150" y2="236"/>
+  </g>
+  <text x="1186" y="204" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="700" fill="#f59e0b" opacity="0.85">drift</text>
+  <circle cx="110" cy="500" r="34" fill="none" stroke="#f59e0b" stroke-opacity="0.2" stroke-width="2"/>
+  <circle cx="110" cy="500" r="56" fill="none" stroke="#f59e0b" stroke-opacity="0.12" stroke-width="1.5"/>
+  <circle cx="110" cy="500" r="80" fill="none" stroke="#f59e0b" stroke-opacity="0.07" stroke-width="1"/>
+
+  <!-- logo tile -->
+  <rect x="72" y="64" width="96" height="96" rx="24" fill="url(#brand)"/>
+  <rect x="94" y="98" width="34" height="8" rx="4" fill="#ffffff" opacity="0.95"/>
+  <rect x="94" y="116" width="34" height="8" rx="4" fill="#ffffff" opacity="0.95"/>
+  <rect x="112" y="134" width="34" height="8" rx="4" fill="#0b1220" opacity="0.85"/>
+  <rect x="112" y="152" width="34" height="8" rx="4" fill="#0b1220" opacity="0.85"/>
+
+  <text x="72" y="316" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="78" font-weight="800" fill="#f8fafc" letter-spacing="1">dsh-driftwatch</text>
+  <text x="72" y="374" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="29" font-weight="500" fill="#94a3b8">Behaviour-drift reports between DeepSeek Harness sessions</text>
+<g font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="20" font-weight="600">
+    <rect x="72" y="496" width="203" height="52" rx="26" fill="url(#chip)" stroke="#78350f" stroke-width="1.5"/>
+    <text x="173.5" y="529" text-anchor="middle" fill="#fcd34d">drift_compare</text>
+    <rect x="291" y="496" width="170" height="52" rx="26" fill="url(#chip)" stroke="#78350f" stroke-width="1.5"/>
+    <text x="376" y="529" text-anchor="middle" fill="#fcd34d">drift_list</text>
+    <rect x="477" y="496" width="170" height="52" rx="26" fill="url(#chip)" stroke="#78350f" stroke-width="1.5"/>
+    <text x="562" y="529" text-anchor="middle" fill="#fcd34d">--markdown</text>
+    <rect x="663" y="496" width="225" height="52" rx="26" fill="url(#chip)" stroke="#78350f" stroke-width="1.5"/>
+    <text x="775.5" y="529" text-anchor="middle" fill="#fcd34d">--fail-on-drift</text>
+    <rect x="904" y="496" width="137" height="52" rx="26" fill="url(#chip)" stroke="#78350f" stroke-width="1.5"/>
+    <text x="972.5" y="529" text-anchor="middle" fill="#fcd34d">CI gate</text>
+  </g>
+</svg>

@@ -1,0 +1,43 @@
+46 session(s), newest first:
+
+  session-9f7f950f-9eac-45a0-82de-86dac39cc2da   7372 KB  2026-09-22 13:28  --C-Users-Administrator-Desktop-Harness--
+  session-774a7ad6-48f6-4685-a62e-affc352f1a06  20532 KB  2026-09-22 11:26  --C-Users-Administrator-Desktop-Show~0020Time--
+  session-f4bcbe50-ba2f-4d31-ad78-5ead32241bc2   3549 KB  2026-09-17 15:02  --C-Users-Administrator-Desktop-md--
+  session-a4b9701a-fce1-4f6a-a10a-e43d2a35a44c   1648 KB  2026-09-15 15:17  --C-Users-Administrator-Desktop-Show~0020Time-~591C~5954--
+  session-b6c2dcf3-fcfb-4390-8baa-02a10c66335c   2394 KB  2026-09-15 09:35  --C-Users-Administrator-Desktop-UAV--
+  session-b130e75b-bf80-47c8-a584-4e65c5d195ad    848 KB  2026-09-15 09:31  --C-Users-Administrator-Desktop-UAV--
+  session-48cea79b-e922-4003-bca8-0e75f82373f1   2950 KB  2026-09-14 10:09  --D-~6587~4EF6-Dictionary--
+  session-7767ac59-cb85-4042-8523-1252bf945ae4      0 KB  2026-09-13 10:25  --C-Users-Administrator-Desktop-md--
+  session-dc23408c-fabd-4d11-86e2-e55a041ce03b      0 KB  2026-09-13 10:25  --D-~6587~4EF6-Dictionary--
+  session-a6323180-3618-408b-9a97-9e291ec733d6   3373 KB  2026-09-13 09:28  --C-Users-Administrator-Desktop-Show~0020Time--
+  session-0f096688-0577-49a7-a859-03d076be1445      0 KB  2026-09-13 09:28  --C-Users-Administrator-Desktop-Show~0020Time--
+  session-a5cf53c0-73e8-40ff-8e57-8d4c3e4f03ab   2973 KB  2026-09-10 06:03  --C-Users-Administrator-Desktop-Show~0020Time--
+  session-e908a4b6-6244-41b4-bde2-0a9c0b57e144   1885 KB  2026-09-08 15:23  --C-Users-Administrator-Desktop-Show~0020Time--
+  session-c2bd5a6c-7f04-46b8-a5ff-61d130bf253e   4531 KB  2026-09-08 10:10  --C-Users-Administrator-Desktop-Show~0020Time--
+  session-c29ec2ad-92a7-4a37-9dba-a73fed37cf43   2293 KB  2026-09-07 10:31  --C-Users-Administrator-Desktop-Show~0020Time--
+  3a84ffac-b21c-4887-bcb9-7825c2f31984            745 KB  2026-09-05 15:25  --C-Users-Administrator-Desktop-Show~0020Time--
+  3426acb9-4ee2-4802-b4e0-98ad734353f3            869 KB  2026-09-05 15:22  --C-Users-Administrator-Desktop-Show~0020Time--
+  bcecbcf5-9655-4ae6-87b0-df3cf9a30080           1004 KB  2026-09-05 15:21  --C-Users-Administrator-Desktop-Show~0020Time--
+  060364b7-774b-477f-9fc9-9a48f1b513b3            835 KB  2026-09-05 15:21  --C-Users-Administrator-Desktop-Show~0020Time--
+  264fb8a3-d61b-4fb9-9fd2-d73099777f3c            793 KB  2026-09-05 15:20  --C-Users-Administrator-Desktop-Show~0020Time--
+  fe22769a-9d05-4d97-9363-00de27d2cb55            713 KB  2026-09-05 15:17  --C-Users-Administrator-Desktop-Show~0020Time--
+  8a122575-5a8d-4a12-9511-f89280cc5225            666 KB  2026-09-05 15:16  --C-Users-Administrator-Desktop-Show~0020Time--
+  session-eb364742-5c10-4717-869a-7f599ffb3c9c    736 KB  2026-09-05 14:21  --C-Users-Administrator-Desktop-Show~0020Time--
+  session-ad2fe9d1-16e1-4492-8cb6-616391a21676      0 KB  2026-09-05 12:10  --C-Users-Administrator-Desktop-Harness--
+  session-96e0516a-f77c-4856-aee5-f5f217873d83     19 KB  2026-08-30 10:22  --C-Users-Administrator-Desktop-Harness-dsh-win-toolkit--
+  session-6b7b509e-64e1-47d2-b552-0ba889e16688     17 KB  2026-08-30 10:21  --C-Users-Administrator-Desktop-Harness--
+  session-558b4926-e578-4d3e-90cd-6f21e5f934ff     38 KB  2026-08-30 10:20  --C-Users-Administrator-Desktop-Harness-dsh-netassist--
+  session-05321971-ac9d-4379-bcb9-1fc62a11ee1c     16 KB  2026-08-30 10:14  --C-Users-Administrator-Desktop-Harness--
+  session-f24be304-0795-43c3-8435-5f24a3be0bd3     18 KB  2026-08-30 09:58  --C-Users-Administrator-Desktop-Harness--
+  session-574a0aa8-b404-4988-bacb-f447f165856c     34 KB  2026-08-30 09:57  --C-Users-Administrator-Desktop-Harness--
+  session-65cef7ad-7cce-4ecf-a10e-b77603d4cf98     20 KB  2026-08-30 09:16  --C-Users-Administrator-Desktop-Harness--
+  session-5fbda759-2b88-435e-a7bf-13f5c72e490f     14 KB  2026-08-29 16:34  --C-Users-Administrator-Desktop-md--
+  session-4c684b37-b9a8-4f8b-a57d-70426e0abfef      0 KB  2026-08-29 16:33  --C-Users-Administrator-Desktop-~5316~5B66--
+  session-29af4af7-af7a-493c-ab82-e371548fc827   5917 KB  2026-08-29 16:31  --C-Users-Administrator-Desktop-~5316~5B66--
+  session-c9d97377-6de9-4a5f-9b7b-d36998c8e501      0 KB  2026-08-27 10:30  --C-Users-Administrator-Desktop-Brain~0020Train--
+  session-b86c09c9-5072-4c52-bfb9-b8464cc0ff89   3605 KB  2026-08-27 10:30  --C-Users-Administrator-Desktop-Brain~0020Train--
+  ab961ff3-809d-4271-b3db-fec31167208d            655 KB  2026-08-23 14:36  --C-Users-Administrator-Desktop-Brain~0020Train--
+  6c2aee8f-bc3e-45d5-8562-d0278c1cedc3            380 KB  2026-08-23 14:33  --C-Users-Administrator-Desktop-Brain~0020Train--
+  ae895248-5809-4ac0-a77e-0cd9865996d2            324 KB  2026-08-23 14:32  --C-Users-Administrator-Desktop-Brain~0020Train--
+  869bc186-2266-439c-a050-2a8cc117700d            313 KB  2026-08-23 14:32  --C-Users-Administrator-Desktop-Brain~0020Train--
+  … 6 more

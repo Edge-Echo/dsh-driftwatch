@@ -1,0 +1,51 @@
+# Session fingerprint
+
+- id: `session-b6c2dcf3-fcfb-4390-8baa-02a10c66335c`
+- path: `C:\Users\Administrator\.dsh\sessions\--C-Users-Administrator-Desktop-UAV--\session-b6c2dcf3-fcfb-4390-8baa-02a10c66335c\session.jsonl.zstd`
+- records: 6577 | turns: 4 | steps: 143
+- duration: 1117m 15s
+- tool calls: 163 (errors: 4, max per turn: 84)
+- reasoning: 71776 chunks / 240404 chars
+- retries: 2 | compactions: 0
+- turn outcomes: completed×4
+
+## Tools
+
+- `pwsh`: 48
+- `edit`: 43
+- `write`: 41
+- `read`: 13
+- `web_search`: 6
+- `job_output`: 4
+- `grep`: 3
+- `ask_user_question`: 2
+- `create_goal`: 1
+- `get_goal`: 1
+- `update_goal`: 1
+
+## Files touched (27)
+- `C:\Users\Administrator\Desktop\UAV\arduino-cli.yaml`
+- `C:\Users\Administrator\Desktop\UAV\tools\setup-toolchain.ps1`
+- `C:\Users\Administrator\Desktop\UAV\README.md`
+- `C:\Users\Administrator\Desktop\UAV\docs\01-采购清单.md`
+- `C:\Users\Administrator\Desktop\UAV\docs\02-架构与算法.md`
+- `C:\Users\Administrator\Desktop\UAV\docs\04-安全规范.md`
+- `C:\Users\Administrator\Desktop\UAV\docs\03-实施路线图.md`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\config.h`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\pid.h`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\pid.cpp`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\mixer.h`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\mixer.cpp`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\estimator.h`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\estimator.cpp`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\hal.h`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\hal_avr.cpp`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\telemetry.h`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\telemetry.cpp`
+- `C:\Users\Administrator\Desktop\UAV\firmware\uav_fc\uav_fc.ino`
+- `C:\Users\Administrator\Desktop\UAV\.arduino-user\libraries\MPU6050\src\MPU6050.h`
+- `C:\Users\Administrator\Desktop\UAV\tools\build.ps1`
+- `C:\Users\Administrator\Desktop\UAV\tools\plot_attitude.py`
+- `C:\Users\Administrator\Desktop\UAV\tools\test_telemetry_format.py`
+- `C:\Users\Administrator\Desktop\UAV\.gitignore`
+- `C:\Users\Administrator\Desktop\UAV\docs\05-环境与外网说明.md`

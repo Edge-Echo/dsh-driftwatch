@@ -1,5 +1,7 @@
 # dsh-driftwatch
 
+![dsh-driftwatch](https://raw.githubusercontent.com/Edge-Echo/dsh-driftwatch/main/banner.svg)
+
 > Part of the **dsh-toolkit family**: [dsh-mcp-bridge](https://github.com/Edge-Echo/dsh-mcp-bridge) · [dsh-win-toolkit](https://github.com/Edge-Echo/dsh-win-toolkit) · [dsh-netassist](https://github.com/Edge-Echo/dsh-netassist) · [dsh-driftwatch](https://github.com/Edge-Echo/dsh-driftwatch)
 
 **Behavior-drift reports for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) agents.**
@@ -26,9 +28,9 @@ DriftWatch deliberately does **not** assert and does **not** render trajectories
 
 ![drift report](assets/screenshot-compare.png)
 
-## What it looks like
+![session fingerprint](assets/screenshot-fingerprint.png)
 
-![netassist doctor](assets/screenshot-doctor.png)
+![session list](assets/screenshot-list.png)
 
 ## Quick start
 
