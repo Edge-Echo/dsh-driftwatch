@@ -1,5 +1,7 @@
 # dsh-driftwatch
 
+> Part of the **dsh-toolkit family**: [dsh-mcp-bridge](https://github.com/Edge-Echo/dsh-mcp-bridge) · [dsh-win-toolkit](https://github.com/Edge-Echo/dsh-win-toolkit) · [dsh-netassist](https://github.com/Edge-Echo/dsh-netassist) · [dsh-driftwatch](https://github.com/Edge-Echo/dsh-driftwatch)
+
 **Behavior-drift reports for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) agents.**
 
 You changed a prompt, a plugin, or a model. Something feels different. But *what* changed — and by how much?

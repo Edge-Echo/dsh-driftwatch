@@ -15,7 +15,12 @@
     "regression",
     "ci",
     "observability",
-    "cordis"
+    "cordis",
+    "behavior-drift",
+    "session-replay",
+    "agent-observability",
+    "regression-testing",
+    "zero-dependency"
   ],
   "files": [
     "lib",
