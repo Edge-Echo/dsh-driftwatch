@@ -1,0 +1,10 @@
+# dsh-driftwatch — 行为漂移报告
+# 给 dsh agent 两个工具：对比两次会话的行为漂移、列出可对比的会话。
+# 分析实现见 src/drift.ts；多帧 zstd 解析见 src/session-log.ts。
+
+- insert:
+    - id: driftwatch
+      name: 'dsh-driftwatch'
+      config:
+        # 报告里每个会话最多保留的工具调用条目（防止超大 session 撑爆输出）
+        maxToolCalls: 2000
