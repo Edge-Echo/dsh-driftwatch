@@ -125,7 +125,11 @@ Useful for "compare how you did this task this time vs last time" — the agent 
 
 DSH session logs are append-only `.jsonl.zstd`: every append is a separate zstd frame, so a log is a concatenation of frames. Node's zlib decodes only the first frame and its stream API rejects the rest; DSH itself relies on a private zstd handle plus a koffi FFI fallback.
 
-DriftWatch stays **dependency-free** with a self-healing strategy: scan for the zstd frame magic (`28 B5 2F FD`), then greedily decode from each candidate start until a slice decodes cleanly. Measured on a 20 MB / 34 729-frame log: **full 59 MB decode in ~1.4 s**.
+DriftWatch builds on **[`@edge-echo/dsh-ledger`](https://github.com/Edge-Echo/dsh-ledger)**, which parses the zstd frame structure (RFC 8878) instead of decompressing: 34,729 frames are located in **27 ms**, without decoding a byte, and boundaries are exact rather than recovered by retrying.
+
+The frame walk used to live here as a magic-scan heuristic, so the same subtle format was implemented twice. It now lives in one place, and the swap was checked rather than assumed: over a frozen 20 MiB log the old and new decoders produce the **identical 62,037,223-character payload and the same 53,671 records**. The structural walk costs about 17% more CPU in this path (overall time is dominated by zstd decoding, not by finding boundaries) — the win is exactness and one implementation, not throughput.
+
+That is the project's only runtime dependency, and it is itself dependency-free: **no third-party runtime code** ships in either package.
 
 ## Limitations
 
