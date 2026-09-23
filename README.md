@@ -2,7 +2,11 @@
 
 ![dsh-driftwatch](https://raw.githubusercontent.com/Edge-Echo/dsh-driftwatch/main/banner.svg)
 
-> Part of the **dsh-toolkit family**: [dsh-mcp-bridge](https://github.com/Edge-Echo/dsh-mcp-bridge) · [dsh-win-toolkit](https://github.com/Edge-Echo/dsh-win-toolkit) · [dsh-netassist](https://github.com/Edge-Echo/dsh-netassist) · [dsh-driftwatch](https://github.com/Edge-Echo/dsh-driftwatch)
+> Part of the **dsh-toolkit family**: [dsh-mcp-bridge](https://github.com/Edge-Echo/dsh-mcp-bridge) · [dsh-win-toolkit](https://github.com/Edge-Echo/dsh-win-toolkit) · [dsh-netassist](https://github.com/Edge-Echo/dsh-netassist) · [dsh-driftwatch](https://github.com/Edge-Echo/dsh-driftwatch) · [mcp-netassist](https://github.com/Edge-Echo/mcp-netassist) · [dsh-ledger](https://github.com/Edge-Echo/dsh-ledger)
+
+[![npm version](https://img.shields.io/npm/v/dsh-driftwatch?color=f59e0b&logo=npm)](https://www.npmjs.com/package/dsh-driftwatch)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-driftwatch?color=fbbf24)](https://www.npmjs.com/package/dsh-driftwatch)
+[![license](https://img.shields.io/badge/license-MIT-fcd34d)](LICENSE)
 
 **Behavior-drift reports for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) agents.**
 
@@ -20,9 +24,15 @@ DSH logs everything (`Model-visible means logged`), so the evidence already exis
 |---|---|
 | `dsh-replay` | "show me this trajectory" (debugging) |
 | `dsh-eval-harness` | "does this match my written expectations?" (assertions) |
+| `dsh-session-snapshot` | "record this session so tests can rely on it" (fixtures) |
+| `dsh-windtunnel` | "replay the pipeline with a scripted model" (deterministic contracts) |
 | **`dsh-driftwatch`** | **"how does this run differ from that run?" (comparison)** |
 
-DriftWatch deliberately does **not** assert and does **not** render trajectories. It produces a *drift report*: a structured, reviewable statement of behavioral change, plus an optional threshold gate for CI.
+`dsh-replay` diffs trajectories for debugging; `dsh-eval-harness` gates on assertions written in
+advance. Neither answers the question in between: *this run took a different path — is that a
+problem?* DriftWatch deliberately does **not** assert and does **not** render trajectories. It
+produces a *drift report*: a structured, reviewable statement of behavioral change, plus an
+optional threshold gate for CI.
 
 ## What it looks like
 
