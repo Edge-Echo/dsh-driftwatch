@@ -1,0 +1,2 @@
+minimumReleaseAgeExclude:
+  - '@edge-echo/dsh-ledger@0.2.0'

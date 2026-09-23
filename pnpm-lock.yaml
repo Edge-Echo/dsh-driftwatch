@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@edge-echo/dsh-ledger':
+        specifier: ^0.2.0
+        version: 0.2.0
     devDependencies:
       '@deepseek-ai/cordis':
         specifier: ^4.0.1
@@ -149,6 +153,11 @@ packages:
   '@deepseek-ai/schemastery@3.18.2':
     resolution: {integrity: sha512-njDtZsznjYxok7KLLlHOPyuv2efdWVbSflAHgztSfbMsg+CVraEoRe2DjOCgClYv3ZCSm7WXoaUkbB/+RY7tWQ==}
 
+  '@edge-echo/dsh-ledger@0.2.0':
+    resolution: {integrity: sha512-pGNCWvHoRVq7DWi7WLr/ydzQkVT+qEy4ZKkUoSsFWOgXlEVjhlS4hLJRcw7sjPLgPiJrYyS0VH5TOhEn3Kb1GQ==}
+    engines: {node: '>=22'}
+    hasBin: true
+
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
@@ -273,6 +282,8 @@ snapshots:
     dependencies:
       '@deepseek-ai/cosmokit': 1.8.3
       '@standard-schema/spec': 1.1.0
+
+  '@edge-echo/dsh-ledger@0.2.0': {}
 
   '@standard-schema/spec@1.1.0': {}
 
