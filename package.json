@@ -1,7 +1,7 @@
 {
   "name": "dsh-driftwatch",
-  "version": "0.1.0",
-  "description": "Behavior-drift reports for DeepSeek Harness agents: compare two session logs and see exactly how behavior changed — tool sequence, file operations, reasoning volume, timing, retries — zero dependencies, CI-ready.",
+  "version": "0.1.1",
+  "description": "Behavior-drift reports for DeepSeek Harness agents: compare two session logs and see exactly how behavior changed — tool sequence, file operations, reasoning volume, timing, retries — no third-party dependencies, CI-ready.",
   "type": "module",
   "license": "MIT",
   "author": "dsh-driftwatch contributors",
@@ -20,7 +20,7 @@
     "session-replay",
     "agent-observability",
     "regression-testing",
-    "zero-dependency"
+    "no-third-party-deps"
   ],
   "files": [
     "lib",
@@ -54,6 +54,9 @@
     "bundle": {
       "patch": "./cordis.patch.yml"
     }
+  },
+  "dependencies": {
+    "@edge-echo/dsh-ledger": "^0.2.0"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
