@@ -1,12 +1,5 @@
 # dsh-driftwatch
 
-![dsh-driftwatch](https://raw.githubusercontent.com/Edge-Echo/dsh-driftwatch/main/banner.svg)
-
-
-[![npm version](https://img.shields.io/npm/v/dsh-driftwatch?color=f59e0b&logo=npm)](https://www.npmjs.com/package/dsh-driftwatch)
-[![npm downloads](https://img.shields.io/npm/dm/dsh-driftwatch?color=fbbf24)](https://www.npmjs.com/package/dsh-driftwatch)
-[![license](https://img.shields.io/badge/license-MIT-fcd34d)](LICENSE)
-
 **You changed a prompt, a plugin or a model. Something feels different. This tells you what actually changed — and by how much.**
 
 ### When you need this
@@ -16,6 +9,12 @@
 - You need to compare a run against a known-good run without reading 50,000 log lines
 
 The drift score is four weighted groups, and every raw number behind them is printed — so you can disagree with the weights instead of trusting them.
+
+![dsh-driftwatch](https://raw.githubusercontent.com/Edge-Echo/dsh-driftwatch/main/banner.svg)
+
+[![npm version](https://img.shields.io/npm/v/dsh-driftwatch?color=f59e0b&logo=npm)](https://www.npmjs.com/package/dsh-driftwatch)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-driftwatch?color=fbbf24)](https://www.npmjs.com/package/dsh-driftwatch)
+[![license](https://img.shields.io/badge/license-MIT-fcd34d)](LICENSE)
 
 You changed a prompt, a plugin, or a model. Something feels different. But *what* changed — and by how much?
 
