@@ -2,13 +2,20 @@
 
 ![dsh-driftwatch](https://raw.githubusercontent.com/Edge-Echo/dsh-driftwatch/main/banner.svg)
 
-> Part of the **dsh-toolkit family**: [dsh-mcp-bridge](https://github.com/Edge-Echo/dsh-mcp-bridge) · [dsh-win-toolkit](https://github.com/Edge-Echo/dsh-win-toolkit) · [dsh-netassist](https://github.com/Edge-Echo/dsh-netassist) · [dsh-driftwatch](https://github.com/Edge-Echo/dsh-driftwatch) · [mcp-netassist](https://github.com/Edge-Echo/mcp-netassist) · [dsh-ledger](https://github.com/Edge-Echo/dsh-ledger)
 
 [![npm version](https://img.shields.io/npm/v/dsh-driftwatch?color=f59e0b&logo=npm)](https://www.npmjs.com/package/dsh-driftwatch)
 [![npm downloads](https://img.shields.io/npm/dm/dsh-driftwatch?color=fbbf24)](https://www.npmjs.com/package/dsh-driftwatch)
 [![license](https://img.shields.io/badge/license-MIT-fcd34d)](LICENSE)
 
-**Behavior-drift reports for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) agents.**
+**You changed a prompt, a plugin or a model. Something feels different. This tells you what actually changed — and by how much.**
+
+### When you need this
+
+- The agent behaves differently after an upgrade and you cannot point at the reason
+- You want a CI gate that fails when behaviour drifts, rather than an assertion you have to write first
+- You need to compare a run against a known-good run without reading 50,000 log lines
+
+The drift score is four weighted groups, and every raw number behind them is printed — so you can disagree with the weights instead of trusting them.
 
 You changed a prompt, a plugin, or a model. Something feels different. But *what* changed — and by how much?
 
@@ -140,3 +147,16 @@ That is the project's only runtime dependency, and it is itself dependency-free:
 ## License
 
 MIT
+
+## Related
+
+Part of the **dsh-toolkit family** — small, independently useful pieces for
+[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness):
+
+- [dsh-mcp-bridge](https://github.com/Edge-Echo/dsh-mcp-bridge) — install six curated MCP servers, verified in CI
+- [dsh-win-toolkit](https://github.com/Edge-Echo/dsh-win-toolkit) — clipboard, notifications, hosts, port checks on Windows
+- [dsh-netassist](https://github.com/Edge-Echo/dsh-netassist) — network and proxy diagnosis with a concrete next step
+- [dsh-driftwatch](https://github.com/Edge-Echo/dsh-driftwatch) — behaviour-drift reports between two session logs
+- [dsh-ledger](https://github.com/Edge-Echo/dsh-ledger) — what the agent did to your files, provably unaltered
+- [dsh-release-evidence](https://github.com/Edge-Echo/dsh-release-evidence) — one verifiable artifact per release
+- [mcp-netassist](https://github.com/Edge-Echo/mcp-netassist) — the same network checks as an MCP server, any client
