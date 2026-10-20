@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { zstdCompressSync } from 'node:zlib'
 import { compareFingerprints, fingerprint } from '../lib/drift.js'
-import { renderMarkdown } from '../lib/report.js'
+import { renderHtml, renderMarkdown } from '../lib/report.js'
 import { readSessionLog } from '../lib/session-log.js'
 
 function records(toolCount) {
@@ -64,6 +64,11 @@ const fpA = fingerprint(logA)
 const fpB = fingerprint(logB)
 const report = compareFingerprints(fpA, fpB)
 
+const html = renderHtml(report, fpA, fpB)
+// Session data reaches the HTML report, so escaping is a property worth asserting rather than
+// eyeballing. A crafted tool name must not become markup.
+const hostile = renderHtml({ ...report, toolUsage: [{ name: '<img src=x onerror=alert(1)>', a: 1, b: 2, delta: 1 }] }, fpA, fpB)
+
 const checks = [
   ['multi-frame decode A', logA.frames >= 5],
   ['multi-frame decode B', logB.frames >= 8],
@@ -76,6 +81,11 @@ const checks = [
   ['drift score in range', report.score >= 0 && report.score <= 100],
   ['verdict assigned', ['stable', 'moderate', 'significant'].includes(report.verdict)],
   ['markdown rendered', renderMarkdown(report, fpA, fpB).includes('# Behavior drift report')],
+  ['html is a complete document', html.startsWith('<!doctype html>') && html.trimEnd().endsWith('</html>')],
+  ['html carries the score', html.includes(`>${report.score}<`)],
+  ['html carries the verdict', html.includes('significant drift') || html.includes('moderate drift') || html.includes('stable')],
+  ['html is self-contained (no scripts, no remote assets)', !html.includes('<script') && !html.includes('http://') && !html.includes('https://')],
+  ['html escapes session data', hostile.includes('&lt;img') && !hostile.includes('<img')],
 ]
 
 let failed = 0

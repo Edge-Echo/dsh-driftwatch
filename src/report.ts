@@ -100,8 +100,179 @@ export function renderMarkdown(report: DriftReport, a: SessionFingerprint, b: Se
   return lines.join('\n')
 }
 
-/** Render a compact single-line summary (for CLI stdout when not verbose). */
-export function renderSummary(report: DriftReport): string {
+/** Escape text before it goes into HTML: tool names and file paths come from session data. */
+function esc(value: unknown): string {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+const VERDICT_STYLE: Record<DriftReport['verdict'], { color: string; label: string }> = {
+  stable: { color: '#22c55e', label: 'stable' },
+  moderate: { color: '#f59e0b', label: 'moderate drift' },
+  significant: { color: '#ef4444', label: 'significant drift' },
+}
+
+/**
+ * Render a self-contained HTML report.
+ *
+ * No scripts and no external assets: it can be attached to a PR, opened from disk, or archived with
+ * the session it describes. Every value that originates in session data is escaped — tool names and
+ * file paths are attacker-influenced in the general case, and a report that renders arbitrary markup
+ * is a report nobody should open.
+ */
+export function renderHtml(report: DriftReport, a: SessionFingerprint, b: SessionFingerprint): string {
+  const style = VERDICT_STYLE[report.verdict]
+  const maxTool = Math.max(1, ...report.toolUsage.map((t) => Math.max(t.a, t.b)))
+
+  const toolRows = report.toolUsage
+    .slice(0, 15)
+    .map((t) => {
+      const wA = Math.round((t.a / maxTool) * 100)
+      const wB = Math.round((t.b / maxTool) * 100)
+      return `<tr>
+        <td class="name">${esc(t.name)}</td>
+        <td class="bar"><span class="b b-a" style="width:${wA}%"></span><em>${t.a}</em></td>
+        <td class="bar"><span class="b b-b" style="width:${wB}%"></span><em>${t.b}</em></td>
+        <td class="delta ${t.delta > 0 ? 'up' : t.delta < 0 ? 'down' : ''}">${signed(t.delta)}</td>
+      </tr>`
+    })
+    .join('\n')
+
+  const metricRows = report.metrics
+    .filter((m) => !(m.a === 0 && m.b === 0))
+    .map(
+      (m) => `<tr>
+        <td class="name">${esc(m.name)}</td>
+        <td class="num">${m.a}</td>
+        <td class="num">${m.b}</td>
+        <td class="delta ${m.delta > 0 ? 'up' : m.delta < 0 ? 'down' : ''}">${signed(m.delta)}</td>
+        <td class="num">${esc(pctLabel(m.pct))}</td>
+      </tr>`,
+    )
+    .join('\n')
+
+  const changes: string[] = []
+  if (report.toolSequence.divergence > 0.2) {
+    changes.push(`tool sequence ordered differently — ${(report.toolSequence.divergence * 100).toFixed(0)}% not on the common subsequence`)
+  }
+  const mix = report.toolUsage.slice(0, 3).filter((t) => t.delta !== 0)
+  if (mix.length) changes.push(`tool mix: ${mix.map((t) => `${esc(t.name)} ${signed(t.delta)}`).join(', ')}`)
+  const big = report.metrics.filter((m) => m.pct !== null && Math.abs(m.pct) >= 20)
+  if (big.length) changes.push(`metrics: ${big.map((m) => `${esc(m.name)} ${esc(pctLabel(m.pct))}`).join(', ')}`)
+  if (report.files.onlyInA.length || report.files.onlyInB.length) {
+    changes.push(`file targets: ${report.files.onlyInA.length} dropped, ${report.files.onlyInB.length} new`)
+  }
+
+  const fileList = (paths: string[], limit = 12) => {
+    const shown = paths.slice(0, limit).map((p) => `<code>${esc(p)}</code>`).join(' ')
+    return `${shown}${paths.length > limit ? ` <em>… ${paths.length - limit} more</em>` : ''}`
+  }
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Behavior drift report — ${esc(a.id)} → ${esc(b.id)}</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 40px 24px; background: #0b1220; color: #e2e8f0;
+    font: 15px/1.55 system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  main { max-width: 940px; margin: 0 auto; }
+  h1 { font-size: 26px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8;
+    margin: 34px 0 10px; font-weight: 600; }
+  .sub { color: #94a3b8; font-size: 13px; margin-bottom: 22px; }
+  .verdict { display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-radius: 12px;
+    background: #0f1b2d; border: 1px solid #1e2f47; border-left: 4px solid ${style.color}; }
+  .badge { font-weight: 700; font-size: 17px; color: ${style.color}; }
+  .score { margin-left: auto; font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .score small { font-size: 13px; color: #94a3b8; font-weight: 500; }
+  .ids { display: flex; gap: 26px; margin-top: 14px; color: #94a3b8; font-size: 13px; flex-wrap: wrap; }
+  .ids code { color: #cbd5e1; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-weight: 600; color: #94a3b8; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 8px 10px; border-bottom: 1px solid #1e2f47; }
+  td { padding: 8px 10px; border-bottom: 1px solid #14202f; vertical-align: middle; }
+  td.name { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #cbd5e1; }
+  td.num, td.delta { text-align: right; font-variant-numeric: tabular-nums; }
+  .bar { width: 26%; }
+  .b { display: inline-block; height: 9px; border-radius: 5px; vertical-align: middle; min-width: 2px; }
+  .b-a { background: #38bdf8; opacity: 0.75; }
+  .b-b { background: #a78bfa; }
+  .bar em { font-style: normal; font-size: 12px; color: #94a3b8; margin-left: 8px; }
+  .up { color: #f59e0b; }
+  .down { color: #38bdf8; }
+  ul { margin: 8px 0 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px;
+    background: #14202f; padding: 2px 6px; border-radius: 5px; color: #cbd5e1; }
+  .note { margin-top: 30px; padding: 14px 18px; border-radius: 10px; background: #0f1b2d;
+    border: 1px solid #1e2f47; color: #94a3b8; font-size: 13px; }
+  footer { margin-top: 30px; color: #64748b; font-size: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Behavior drift report</h1>
+  <div class="sub">Generated ${esc(report.generatedAt)} by dsh-driftwatch</div>
+
+  <div class="verdict">
+    <span class="badge">${esc(style.label)}</span>
+    <span class="score">${report.score}<small>/100</small></span>
+  </div>
+  <div class="ids">
+    <span>A (baseline) <code>${esc(a.id)}</code></span>
+    <span>B (candidate) <code>${esc(b.id)}</code></span>
+    <span>${a.turns} → ${b.turns} turns</span>
+    <span>${a.toolCalls.length} → ${b.toolCalls.length} tool calls</span>
+  </div>
+
+  <h2>Tool sequence</h2>
+  <p>${report.toolSequence.exact ? 'LCS alignment' : 'multiset overlap (sequences too long for exact LCS)'}:
+    <strong>${report.toolSequence.kept}</strong> kept,
+    <strong>${report.toolSequence.removed}</strong> removed,
+    <strong>${report.toolSequence.added}</strong> added —
+    divergence ${(report.toolSequence.divergence * 100).toFixed(1)}%</p>
+  ${report.toolNamesOnlyInA.length ? `<p>Only in A: ${report.toolNamesOnlyInA.map((n) => `<code>${esc(n)}</code>`).join(' ')}</p>` : ''}
+  ${report.toolNamesOnlyInB.length ? `<p>Only in B: ${report.toolNamesOnlyInB.map((n) => `<code>${esc(n)}</code>`).join(' ')}</p>` : ''}
+
+  ${toolRows ? `<h2>Tool usage</h2>
+  <table>
+    <thead><tr><th>tool</th><th class="bar">A</th><th class="bar">B</th><th>Δ</th></tr></thead>
+    <tbody>${toolRows}</tbody>
+  </table>` : ''}
+
+  ${metricRows ? `<h2>Metrics</h2>
+  <table>
+    <thead><tr><th>metric</th><th>A</th><th>B</th><th>Δ</th><th>change</th></tr></thead>
+    <tbody>${metricRows}</tbody>
+  </table>` : ''}
+
+  ${report.files.onlyInA.length || report.files.onlyInB.length ? `<h2>File operations</h2>
+  ${report.files.onlyInA.length ? `<p>Only touched in A (${report.files.onlyInA.length}):<br>${fileList(report.files.onlyInA)}</p>` : ''}
+  ${report.files.onlyInB.length ? `<p>Only touched in B (${report.files.onlyInB.length}):<br>${fileList(report.files.onlyInB)}</p>` : ''}
+  <p>Common: ${report.files.common.length}</p>` : ''}
+
+  ${changes.length ? `<h2>What changed most</h2><ul>${changes.map((c) => `<li>${c}</li>`).join('')}</ul>` : ''}
+
+  <div class="note">DriftWatch does not judge whether this drift is acceptable — that is your call.
+  The score is four weighted groups, and every raw number behind it is on this page so you can
+  disagree with the weights.</div>
+
+  <footer>A ${a.records} records · B ${b.records} records · generated by dsh-driftwatch</footer>
+</main>
+</body>
+</html>
+`
+}
+
+/** Render a compact single-line summary (for CLI stdout when not verbose). */export function renderSummary(report: DriftReport): string {
   return `drift ${report.score}/100 (${report.verdict}) — tools ${report.a.toolCalls}→${report.b.toolCalls}, ` +
     `sequence divergence ${(report.toolSequence.divergence * 100).toFixed(1)}%, ` +
     `duration ${ms(report.a.durationMs)}→${ms(report.b.durationMs)}`

@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.0
+
+**HTML reports.** `compare --html <file>` writes a single self-contained page — no scripts, no
+external assets — with the verdict, score, tool-usage bars, metric deltas and file-set changes.
+Useful for attaching to a PR or archiving beside the session it describes; the Markdown report
+remains the option for terminals and PR comments.
+
+Session data reaches the HTML, so every value is escaped before it is written; the test suite
+asserts that a crafted tool name cannot become markup, and that the output contains no script or
+remote reference.
+
+The test suite grew from 11 checks to 16, covering the HTML document shape, the score and verdict,
+self-containment and escaping.
+
 ## [0.1.1] - 2026-09-23
 
 ### Changed

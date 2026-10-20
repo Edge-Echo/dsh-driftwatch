@@ -48,6 +48,11 @@ optional threshold gate for CI.
 
 ![session list](assets/screenshot-list.png)
 
+![Behaviour drift report — significant drift, 64/100](assets/screenshot-drift-html.png)
+
+`--html` writes one self-contained file — no scripts, no external assets — so a report can be
+attached to a pull request, archived next to the session it describes, or opened from disk.
+
 ## Quick start
 
 ```sh
@@ -59,6 +64,9 @@ npx dsh-driftwatch compare session-b6c2dcf3 session-b130e75b
 
 # CI gate: fail when drift reaches 35/100
 npx dsh-driftwatch compare before after --fail-on-drift 35 --markdown drift.md
+
+# or render a self-contained HTML report you can attach to a PR
+npx dsh-driftwatch compare before after --html drift-report.html
 ```
 
 Real output from two actual runs:

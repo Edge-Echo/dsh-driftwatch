@@ -24,6 +24,10 @@ DSH 记录一切（`模型可见即被记录`），证据一直都在——但�
 
 DriftWatch **刻意不做断言、不渲染轨迹**。它产出一份*漂移报告*：结构化的、可评审的行为变化陈述，另附可选的 CI 阈值门禁。
 
+![行为漂移报告 —— 显著漂移，64/100](assets/screenshot-drift-html.png)
+
+`--html` 输出单个自包含文件（无脚本、无外部资源），可以直接贴进 PR、和对应会话一起归档，或从本地打开。
+
 ## 快速开始
 
 ```sh
@@ -35,6 +39,9 @@ npx dsh-driftwatch compare session-b6c2dcf3 session-b130e75b
 
 # CI 门禁：漂移分 ≥35 时失败
 npx dsh-driftwatch compare before after --fail-on-drift 35 --markdown drift.md
+
+# 或者生成一个自包含的 HTML 报告，可以直接贴进 PR
+npx dsh-driftwatch compare before after --html drift-report.html
 ```
 
 真实运行输出（两个实际会话）：

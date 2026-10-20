@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // dsh-driftwatch CLI.
 //
-//   dsh-driftwatch compare <sessionA> <sessionB> [--json] [--markdown <file>]
+//   dsh-driftwatch compare <sessionA> <sessionB> [--json] [--markdown <file>] [--html <file>]
 //                          [--fail-on-drift <score>] [--quiet]
 //   dsh-driftwatch fingerprint <session> [--json]
 //   dsh-driftwatch list [--json]
@@ -10,7 +10,7 @@
 // or an unambiguous id prefix (resolved under $DSH_HOME/sessions).
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fingerprint, compareFingerprints } from './drift.js'
-import { renderMarkdown, renderSummary, renderFingerprint } from './report.js'
+import { renderHtml, renderMarkdown, renderSummary, renderFingerprint } from './report.js'
 import { listSessions, readSessionLog, resolveSession } from './session-log.js'
 
 interface Args {
@@ -19,6 +19,7 @@ interface Args {
   json: boolean
   quiet: boolean
   markdownFile?: string
+  htmlFile?: string
   failOnDrift?: number
   maxToolCalls: number
 }
@@ -33,6 +34,7 @@ function parseArgs(argv: string[]): Args {
       case '--json': out.json = true; break
       case '--quiet': out.quiet = true; break
       case '--markdown': out.markdownFile = rest.shift(); break
+      case '--html': out.htmlFile = rest.shift(); break
       case '--fail-on-drift': out.failOnDrift = Number(rest.shift()); break
       case '--max-tool-calls': out.maxToolCalls = Number(rest.shift()); break
       case '--version': case '-v': out.command = '--version'; break
@@ -57,6 +59,7 @@ Usage:
       Options:
         --json                  print the machine-readable report instead
         --markdown <file>       also write the Markdown report to <file>
+        --html <file>           also write a self-contained HTML report to <file>
         --fail-on-drift <n>     exit 1 when the drift score is >= n (CI gate)
         --quiet                 print only the one-line summary
         --max-tool-calls <n>    cap retained tool calls per session (default 5000)
@@ -74,6 +77,7 @@ Examples:
   dsh-driftwatch list
   dsh-driftwatch compare session-774a session-91bc
   dsh-driftwatch compare session-a session-b --fail-on-drift 35 --markdown drift.md
+  dsh-driftwatch compare session-a session-b --html drift.html
 `
 
 function main(): number {
@@ -129,6 +133,9 @@ function main(): number {
     if (args.markdownFile) {
       writeFileSync(args.markdownFile, renderMarkdown(report, fpA, fpB), 'utf8')
     }
+    if (args.htmlFile) {
+      writeFileSync(args.htmlFile, renderHtml(report, fpA, fpB), 'utf8')
+    }
     if (args.json) {
       console.log(JSON.stringify(report, null, 2))
     } else if (args.quiet) {
@@ -136,6 +143,7 @@ function main(): number {
     } else {
       console.log(renderMarkdown(report, fpA, fpB))
       if (args.markdownFile) console.log(`\n_Report also written to ${args.markdownFile}_`)
+      if (args.htmlFile) console.log(`_HTML report written to ${args.htmlFile}_`)
     }
 
     if (args.failOnDrift !== undefined) {
