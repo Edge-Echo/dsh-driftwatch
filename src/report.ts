@@ -173,7 +173,9 @@ export function renderHtml(report: DriftReport, a: SessionFingerprint, b: Sessio
   }
 
   return `<!doctype html>
-<html lang="en">
+<!-- Technical artifact: identifiers, hashes and status names translate badly and a translated
+     "state" or "digest" is worse than an untranslated one, so the page opts out of auto-translation. -->
+<html lang="en" translate="no">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

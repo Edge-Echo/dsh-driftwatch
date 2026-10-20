@@ -1,6 +1,6 @@
 {
   "name": "dsh-driftwatch",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Behavior-drift reports for DeepSeek Harness agents: compare two session logs and see exactly how behavior changed — tool sequence, file operations, reasoning volume, timing, retries — no third-party dependencies, CI-ready.",
   "type": "module",
   "license": "MIT",

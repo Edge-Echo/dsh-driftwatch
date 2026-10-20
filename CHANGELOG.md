@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+HTML reports opt out of auto-translation: a translated "verdict" or tool name is worse than an untranslated one.
+
 ## 0.2.0
 
 **HTML reports.** `compare --html <file>` writes a single self-contained page — no scripts, no
